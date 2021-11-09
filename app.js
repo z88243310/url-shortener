@@ -49,6 +49,18 @@ app.get('/show/:randCode', (req, res) => {
     .catch((error) => console.log(error))
 })
 
+// Handle shortenURL
+app.get('/:randCode', (req, res) => {
+  console.log(req.params)
+  Shortener.findOne({ randCode: req.params.randCode })
+    .lean()
+    .then((shortener) => {
+      console.log(shortener)
+      res.redirect(shortener.url)
+    })
+    .catch((error) => console.log(error))
+})
+
 // listening server
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT}`)
