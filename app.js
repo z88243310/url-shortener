@@ -32,11 +32,20 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
-// Create
+// Create : if exit , redirect show page
 app.post('/', (req, res) => {
   const primitiveURL = req.body.primitiveURL
-  Shortener.create({ url: primitiveURL, randCode: generatedRandomCode() })
-    .then((shortener) => res.redirect(`/show/${shortener.randCode}`))
+  Shortener.findOne({ url: primitiveURL })
+    .lean()
+    .then((shortener) => {
+      if (shortener === null)
+        Shortener.create({ url: primitiveURL, randCode: generatedRandomCode() })
+          .then((shortener) => res.redirect(`/show/${shortener.randCode}`))
+          .catch((error) => console.log(error))
+      else {
+        res.redirect(`/show/${shortener.randCode}`)
+      }
+    })
     .catch((error) => console.log(error))
 })
 
