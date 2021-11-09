@@ -12,6 +12,7 @@ require('./config/mongoose')
 // set express-handlebars
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
+app.use(express.static('public'))
 
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(express.urlencoded({ extended: true }))
@@ -43,8 +44,9 @@ app.post('/', (req, res) => {
 
 // Show shortenURL
 app.get('/show/:randCode', (req, res) => {
-  const domain = `${req.protocol}://${req.hostname}:${PORT}/${req.params.randCode}`
-  Shortener.findOne({ randCode: req.params.randCode })
+  const randCode = req.params.randCode
+  const domain = req.headers.host + '/' + randCode
+  Shortener.findOne({ randCode })
     .lean()
     .then((shortener) => res.render('show', { shortener, domain }))
     .catch((error) => console.log(error))
