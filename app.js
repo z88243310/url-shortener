@@ -1,13 +1,14 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const Shortener = require('./models/shortener')
-const os = require('os')
+const isUrl = require('is-url')
 const generatedRandomCode = require('./models/generateRandomCode')
 const app = express()
 const PORT = 3000
 
 // connect to mongoDB
 const mongoose = require('mongoose')
+const { checkPrime } = require('crypto')
 mongoose.connect('mongodb://localhost/url-shortener', { useNewUrlParser: true, useUnifiedTopology: true })
 // 取得資料庫連線狀態
 const db = mongoose.connection
@@ -35,6 +36,9 @@ app.get('/', (req, res) => {
 // Create : if exit , redirect show page
 app.post('/', (req, res) => {
   const primitiveURL = req.body.primitiveURL
+  // check url
+  if (!isUrl(primitiveURL)) return res.render('index', { invalidURL: true })
+
   Shortener.findOne({ url: primitiveURL })
     .lean()
     .then((shortener) => {
@@ -60,7 +64,6 @@ app.get('/show/:randCode', (req, res) => {
 
 // Handle shortenURL
 app.get('/:randCode', (req, res) => {
-  console.log(req.params)
   Shortener.findOne({ randCode: req.params.randCode })
     .lean()
     .then((shortener) => {
