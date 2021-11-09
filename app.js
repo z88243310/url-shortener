@@ -32,10 +32,20 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+// Create
 app.post('/', (req, res) => {
   const primitiveURL = req.body.primitiveURL
   Shortener.create({ url: primitiveURL, randCode: generatedRandomCode() })
-    .then((shorteners) => res.render('index'))
+    .then((shortener) => res.redirect(`/show/${shortener.randCode}`))
+    .catch((error) => console.log(error))
+})
+
+// Show shortenURL
+app.get('/show/:randCode', (req, res) => {
+  const domain = `${req.protocol}://${req.hostname}:${PORT}/${req.params.randCode}`
+  Shortener.findOne({ randCode: req.params.randCode })
+    .lean()
+    .then((shortener) => res.render('show', { shortener, domain }))
     .catch((error) => console.log(error))
 })
 

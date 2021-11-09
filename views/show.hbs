@@ -1,0 +1,15 @@
+{{#if shortener}}
+
+<h2>Success! Please use this link:</h2>
+<a href="{{domain}}">{{domain}}</a>  
+<button type="button">Copy</button>
+
+{{else}}
+
+<form action="/" method="get">
+  <h2>The URL is error!</h2>
+  <button type="submit">Back to homepage</button>
+</form>
+
+{{/if}}
+
