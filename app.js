@@ -1,5 +1,8 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const Shortener = require('./models/shortener')
+const os = require('os')
+const generatedRandomCode = require('./models/generateRandomCode')
 const app = express()
 const PORT = 3000
 
@@ -21,9 +24,19 @@ db.once('open', () => {
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
+// 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
+app.use(express.urlencoded({ extended: true }))
+
 // 首頁
 app.get('/', (req, res) => {
   res.render('index')
+})
+
+app.post('/', (req, res) => {
+  const primitiveURL = req.body.primitiveURL
+  Shortener.create({ url: primitiveURL, randCode: generatedRandomCode() })
+    .then((shorteners) => res.render('index'))
+    .catch((error) => console.log(error))
 })
 
 // listening server
