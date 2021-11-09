@@ -5,8 +5,7 @@
   <input class="text-center align-middle w-50 mr-3" value="{{domain}}" {{domain}} disabled>
   <button class="d-inline-block btn btn-primary " type="button">Copy</button>
 </div>
-
-<a href="/" class="mx-auto btn btn-secondary text-white" type="button">Back</a>
+<button onclick="window.history.back();" class="mx-auto btn btn-secondary text-white" >Back</button>
 {{else}}
 
 <form action="/" method="get">
