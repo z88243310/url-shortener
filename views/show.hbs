@@ -1,11 +1,10 @@
 {{#if shortener}}
 
 <h2 class="mb-4" >Success! Please use this link:</h2>
-<div class="mb-5">
-  <input id="url-input" class="text-center align-middle w-50 mr-3" value="{{domain}}" {{domain}} disabled>
-  <button id="btn-copy"class="d-inline-block btn btn-primary ">Copy</button>
-</div>
+  <a id="url-link" href="{{domain}}" target="_blank" class="d-block mb-5 text-center align-middle w-50 mr-3 mx-auto">{{domain}}</a>
+
 <button onclick="window.history.back();" class="mx-auto btn btn-secondary text-white" >Back</button>
+<button id="btn-copy" class="ml-3 d-inline-block btn btn-primary ">Copy</button>
 {{else}}
 
 <form action="/" method="get">

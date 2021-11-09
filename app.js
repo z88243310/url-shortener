@@ -45,7 +45,7 @@ app.post('/', (req, res) => {
 // Show shortenURL
 app.get('/show/:randCode', (req, res) => {
   const randCode = req.params.randCode
-  const domain = req.headers.host + '/' + randCode
+  const domain = req.protocol + '://' + req.headers.host + '/' + randCode
   Shortener.findOne({ randCode })
     .lean()
     .then((shortener) => res.render('show', { shortener, domain }))

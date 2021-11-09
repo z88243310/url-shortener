@@ -1,9 +1,9 @@
 const btnCopy = document.querySelector('#btn-copy')
-const urlInput = document.querySelector('#url-input')
+const urlLink = document.querySelector('#url-link')
 
 btnCopy.addEventListener('click', function onCopyButtonClicked() {
   navigator.clipboard
-    .writeText(urlInput.value)
+    .writeText(urlLink.innerText)
     .then(() => {
       console.log('Text copied to clipboard')
     })
@@ -11,5 +11,3 @@ btnCopy.addEventListener('click', function onCopyButtonClicked() {
       console.log('Something went wrong', err)
     })
 })
-
-console.log('hi')
