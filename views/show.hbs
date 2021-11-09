@@ -2,8 +2,8 @@
 
 <h2 class="mb-4" >Success! Please use this link:</h2>
 <div class="mb-5">
-  <input class="text-center align-middle w-50 mr-3" value="{{domain}}" {{domain}} disabled>
-  <button class="d-inline-block btn btn-primary " type="button">Copy</button>
+  <input id="url-input" class="text-center align-middle w-50 mr-3" value="{{domain}}" {{domain}} disabled>
+  <button id="btn-copy"class="d-inline-block btn btn-primary ">Copy</button>
 </div>
 <button onclick="window.history.back();" class="mx-auto btn btn-secondary text-white" >Back</button>
 {{else}}
