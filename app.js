@@ -4,7 +4,7 @@ const Shortener = require('./models/shortener')
 const isUrl = require('is-url')
 const generatedRandomCode = require('./models/generateRandomCode')
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 // connect to mongoDB
 require('./config/mongoose')
