@@ -1,0 +1,15 @@
+#cross-icon {
+  position: relative;
+  left: -30px;
+  font-size: 22px;
+}
+
+#cross-icon:hover {
+  color: rgb(52, 102, 102);
+}
+
+#url-input {
+  padding-right: 30px;
+  padding-left: 15px;
+  height: 30px;
+}
