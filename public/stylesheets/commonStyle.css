@@ -1,0 +1,19 @@
+body {
+  background-color: cadetblue;
+}
+
+.container {
+  /* border: 5px solid red; */
+  max-width: 600px;
+  min-width: 350px;
+  background-color: cadetblue;
+  width: 50%;
+}
+
+#logo {
+  min-width: 100px;
+  max-width: 120px;
+  /* width: 10vw; */
+}
+
+
