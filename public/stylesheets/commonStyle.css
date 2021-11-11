@@ -16,4 +16,15 @@ body {
   /* width: 10vw; */
 }
 
+#shortener-title {
+  cursor: pointer;
+  user-select: none;
+}
 
+#shortener-title:hover {
+  color: rgb(19, 103, 117);
+}
+
+img {
+  user-select: none;
+}
