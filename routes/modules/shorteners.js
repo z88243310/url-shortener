@@ -3,6 +3,8 @@ const express = require('express')
 const router = express.Router()
 // mongoose do something module
 const Shortener = require('../../models/shortener')
+// show error message
+const errorHandler = require('../../models/errorHandler')
 
 // Show shortenURL
 router.get('/:randCode', (req, res) => {
@@ -11,7 +13,7 @@ router.get('/:randCode', (req, res) => {
   Shortener.findOne({ randCode })
     .lean()
     .then((shortener) => res.render('show', { shortener, domain }))
-    .catch((error) => console.log(error))
+    .catch((error) => errorHandler(error, res))
 })
 
 // 匯出路由模組

@@ -5,6 +5,8 @@ const router = express.Router()
 const Shortener = require('../../models/shortener')
 // generate a randCode module
 const generateRandomCode = require('../../models/generateRandomCode')
+// show error message
+const errorHandler = require('../../models/errorHandler')
 
 // check url valid
 const isUrl = require('is-url')
@@ -26,12 +28,12 @@ router.post('/', (req, res) => {
       if (shortener === null)
         Shortener.create({ url: primitiveURL, randCode: generateRandomCode() })
           .then((shortener) => res.redirect(`/shorteners/${shortener.randCode}`))
-          .catch((error) => console.log(error))
+          .catch((error) => errorHandler(error, res))
       else {
         res.redirect(`/shorteners/${shortener.randCode}`)
       }
     })
-    .catch((error) => console.log(error))
+    .catch((error) => errorHandler(error, res))
 })
 
 // Handle shortenURL
@@ -41,7 +43,7 @@ router.get('/:randCode', (req, res) => {
     .then((shortener) => {
       res.redirect(shortener.url)
     })
-    .catch((error) => console.log(error))
+    .catch((error) => errorHandler(error, res))
 })
 
 // 匯出路由模組
