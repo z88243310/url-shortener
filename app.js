@@ -1,8 +1,14 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+
+// generate a randCode module
+const generateRandomCode = require('./models/generateRandomCode')
+// mongoose do something module
 const Shortener = require('./models/shortener')
+// check url valid
 const isUrl = require('is-url')
-const generatedRandomCode = require('./models/generateRandomCode')
+
+// set express
 const app = express()
 const PORT = process.env.PORT || 3000
 
@@ -32,7 +38,7 @@ app.post('/', (req, res) => {
     .lean()
     .then((shortener) => {
       if (shortener === null)
-        Shortener.create({ url: primitiveURL, randCode: generatedRandomCode() })
+        Shortener.create({ url: primitiveURL, randCode: generateRandomCode() })
           .then((shortener) => res.redirect(`/show/${shortener.randCode}`))
           .catch((error) => console.log(error))
       else {
