@@ -7,7 +7,8 @@
 ## 頁面呈現
 
 <p float="left"><img src="https://raw.githubusercontent.com/z88243310/url-shortener/main/public/images/homePage.png" width="40%">
-<img src="https://raw.githubusercontent.com/z88243310/url-shortener/main/public/images/showPage.png" width="40%"></p>
+<img src="https://raw.githubusercontent.com/z88243310/url-shortener/main/public/images/showPage.png" width="40%">
+<img src="/public/images/shortener.gif" width="40%"></p>
 
 ## 功能描述
 
