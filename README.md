@@ -6,9 +6,9 @@
 
 ## 頁面呈現
 
-<p float="left"><img src="/public/images/homePage.png" width="49%">
-<img src="/public/images/showPage.png" width="49%">
-<img src="/public/images/shortener.gif" width="98.5%"></p>
+<p float="left"><img src="https://github.com/z88243310/url-shortener/blob/main/public/images/homePage.png" width="49%">
+<img src="https://github.com/z88243310/url-shortener/blob/main/public/images/showPage.png" width="49%">
+<img src="https://github.com/z88243310/url-shortener/blob/main/public/images/shortener.gif" width="98.5%"></p>
 
 ## 功能描述
 
