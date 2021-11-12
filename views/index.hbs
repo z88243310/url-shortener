@@ -1,14 +1,11 @@
 <link rel="stylesheet" href="/stylesheets/indexStyle.css">
-
 <form action="/" method="POST" class="post">
-  <input id="url-input" class="text-truncate text-center d-inline-block mx-auto w-75 mx-5 mb-5" type="text" name="primitiveURL"
-    placeholder="      Input URL here" required>
+  <input id="url-input" class="text-truncate text-center d-inline-block mx-auto w-75 mx-5 mb-5"
+    type="text" name="primitiveURL" placeholder="      Input URL here" required>
   <i id="cross-icon" class="fas fa-times align-middle"></i>
-
   <button id="shorten-btn" class="btn btn-dark w-25 mb-4" type="submit">Shorten</button>
   {{#if invalidURL }}
-  <h5 style="color:red;"> please input a valid url</h5>
+    <h5 style="color:red;"> please input a valid url</h5>
   {{/if}}
 </form>
-
 <script src="/javascripts/indexPage.js"></script>
