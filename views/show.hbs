@@ -3,8 +3,7 @@
   <h2 class="mb-4 px-3">Success! Please use this link:</h2>
   <a id="url-link" href="{{domain}}" target="_blank"
     class="d-block mb-5 text-center align-middle mx-auto">{{domain}}</a>
-  <button onclick="window.history.back();"
-    class="mx-auto btn btn-secondary text-white">Back</button>
+  <a id="btn-back" href="{{shortener.url}}" class="mx-auto btn btn-secondary text-white">Back</a>
   <button id="btn-copy" class="ml-3 d-inline-block btn btn-primary ">Copy</button>
 {{else}}
   <form action="/" method="get">

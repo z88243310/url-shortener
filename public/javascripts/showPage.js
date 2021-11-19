@@ -17,3 +17,9 @@ btnCopy.addEventListener('click', function onCopyButtonClicked() {
       console.log('Something went wrong', err)
     })
 })
+
+const btnBack = document.querySelector('#btn-back')
+btnBack.addEventListener('click', function onBackButtonClicked(event) {
+  event.preventDefault()
+  location.href = '/?url=' + encodeURIComponent(event.target.href)
+})

@@ -13,14 +13,14 @@ const isUrl = require('is-url')
 
 // 首頁
 router.get('/', (req, res) => {
-  res.render('index')
+  res.render('index', { url: req.query.url })
 })
 
 // Create : if exit , redirect show page
 router.post('/', (req, res) => {
   const primitiveURL = req.body.primitiveURL
   // 檢查網址，不合規定直接返回首頁，顯示錯誤訊息
-  if (!isUrl(primitiveURL)) return res.render('index', { invalidURL: true })
+  if (!isUrl(primitiveURL)) return res.render('index', { invalidURL: true, url: primitiveURL })
 
   Shortener.findOne({ url: primitiveURL })
     .lean()
